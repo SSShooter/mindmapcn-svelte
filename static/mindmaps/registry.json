@@ -1,0 +1,42 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "mindmapcn-svelte",
+  "homepage": "https://github.com/SSShooter/mindmapcn-svelte",
+  "items": [
+    {
+      "name": "mindmap",
+      "type": "registry:ui",
+      "title": "MindMap",
+      "description": "A Mind Elixir-powered mind map component for Svelte with theme-aware styling, controls, and presentation-first defaults.",
+      "dependencies": ["mind-elixir", "@lucide/svelte", "@zumer/snapdom"],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/lib/components/ui/mindmap/mindmap.svelte",
+          "type": "registry:ui",
+          "target": "$lib/components/ui/mindmap/mindmap.svelte"
+        }
+      ],
+      "css": {},
+      "meta": {
+        "components": [
+          {
+            "title": "MindMap",
+            "href": "/llm/mindmap",
+            "description": "Root Mind Elixir map component for presentation-first diagrams."
+          },
+          {
+            "title": "MindMapControls",
+            "href": "/docs/api-reference",
+            "description": "Zoom, fit-to-view, and export controls."
+          },
+          {
+            "title": "useMindMap",
+            "href": "/docs/api-reference",
+            "description": "Access the Mind Elixir instance and load state from child components."
+          }
+        ]
+      }
+    }
+  ]
+}
