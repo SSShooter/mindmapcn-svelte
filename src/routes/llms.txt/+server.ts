@@ -1,5 +1,7 @@
 import { siteDescription, siteName, siteUrl } from '$lib/site.js';
 
+export const prerender = true;
+
 const markdown = `# ${siteName}
 
 > ${siteDescription}
