@@ -1,4 +1,4 @@
-export const siteUrl = 'https://mindmapcn-svelte.vercel.app';
+export const siteUrl = 'https://mindmapcn-svelte.mind-elixir.com';
 export const siteName = 'mindmapcn-svelte';
 export const siteDescription =
 	'A collection of beautifully designed, accessible, and customizable mind map components for Svelte. Built on mind-elixir. Styled with Tailwind CSS. Works with shadcn-svelte.';
