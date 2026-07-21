@@ -20,5 +20,5 @@
 	<link rel="icon" href="/icon.png" type="image/png" />
 </svelte:head>
 
-<ModeWatcher />
+<ModeWatcher lightClassNames={['light']} />
 {@render children()}
