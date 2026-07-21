@@ -20,7 +20,7 @@
 	</div>
 
 	<div class="animate-fade-up delay-200 flex w-full justify-center px-4">
-		<div class="w-full max-w-3xl">
+		<div class="w-full max-w-4xl">
 			<InstallCodeBlock command={installCommand} />
 		</div>
 	</div>
