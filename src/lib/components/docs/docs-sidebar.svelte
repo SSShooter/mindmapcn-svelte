@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { BookOpen, Bot, Braces, Code, Database, Map } from '@lucide/svelte';
+	import { BookOpen, Bot, Braces, Code, Database, FileText, Map } from '@lucide/svelte';
 	import { cn } from '$lib/utils.js';
 
 	interface Props {
@@ -18,6 +18,7 @@
 				{ title: 'Installation', href: '/docs/installation', icon: Code },
 				{ title: 'llms.txt', href: '/llms.txt', icon: Bot },
 				{ title: 'Usage', href: '/docs/usage', icon: Map },
+				{ title: 'Plaintext Format', href: '/docs/plaintext', icon: FileText },
 				{ title: 'Data Structure', href: '/docs/data-structure', icon: Database },
 				{ title: 'API Reference', href: '/docs/api-reference', icon: Braces }
 			]

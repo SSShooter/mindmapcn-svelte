@@ -8,6 +8,7 @@ const pages = [
 	'/docs',
 	'/docs/installation',
 	'/docs/usage',
+	'/docs/plaintext',
 	'/docs/data-structure',
 	'/docs/api-reference'
 ] as const;

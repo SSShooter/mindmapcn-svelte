@@ -11,6 +11,7 @@ const markdown = `# ${siteName}
 - Docs: ${siteUrl}/docs
 - Installation: ${siteUrl}/docs/installation
 - Usage: ${siteUrl}/docs/usage
+- Plaintext Format: ${siteUrl}/docs/plaintext
 - Data Structure: ${siteUrl}/docs/data-structure
 - API Reference: ${siteUrl}/docs/api-reference
 - GitHub: https://github.com/ssshooter/mindmapcn-svelte
@@ -28,6 +29,7 @@ const markdown = `# ${siteName}
 - Use \`direction\`: \`0\` left, \`1\` right, \`2\` both/side (default).
 - Use \`theme\` only to force light/dark; omit it to follow the document / system theme.
 - Use \`markdown\` when node topics need rich text — pass a custom parser; do not assume a built-in markdown engine.
+- The \`data\` prop accepts either a \`MindElixirData\` object or a Mind Elixir plaintext string (2-space indented outline); strings are parsed automatically via \`plaintextToMindElixir\`. The plaintext format is convenient for AI generation and streaming.
 - Use \`imageProxy\` only when export fails due to CORS on remote node images.
 - For the full instance API, use \`useMindMap().mind\` and see Mind Elixir docs.
 

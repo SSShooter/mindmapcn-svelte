@@ -2,19 +2,30 @@
 	import 'mind-elixir/style.css';
 	import { onMount, type Snippet } from 'svelte';
 	import MindElixir from 'mind-elixir';
+	import { plaintextToMindElixir } from 'mind-elixir/plaintextConverter';
 	import type { MindElixirData, MindElixirInstance, NodeObj, Options } from 'mind-elixir';
 	import { Loader2 } from '@lucide/svelte';
 	import { cn } from '$lib/utils.js';
 	import { MindMapContext, setMindMapContext } from './context.svelte.js';
 	import { createResolvedTheme } from './theme-resolve.svelte.js';
 	import { getTheme } from './themes.js';
-	import type { MindMapDirection, MindMapLocale, MindMapMarkdownParser, MindMapTheme } from './types.js';
+	import type {
+		MindMapDirection,
+		MindMapInput,
+		MindMapLocale,
+		MindMapMarkdownParser,
+		MindMapTheme
+	} from './types.js';
 
 	const SIDE: MindMapDirection = 2;
 
 	interface Props {
-		/** Map data. Updates refresh the map (unless they came from onChange). */
-		data?: MindElixirData;
+		/**
+		 * Map data. Accepts a `MindElixirData` object or a Mind Elixir plaintext
+		 * string (indentation-based outline). Updates refresh the map (unless they
+		 * came from onChange).
+		 */
+		data?: MindMapInput;
 		class?: string;
 		/** Layout direction: 0 left, 1 right, 2 side (both). */
 		direction?: MindMapDirection;
@@ -88,12 +99,18 @@
 		return mindRef;
 	}
 
+	/** Normalize accepted input (object or plaintext string) to MindElixirData. */
+	function toData(input: MindMapInput | undefined): MindElixirData | undefined {
+		if (input == null) return undefined;
+		if (typeof input === 'string') return plaintextToMindElixir(input);
+		return input;
+	}
+
 	onMount(() => {
 		if (!containerEl || mindRef) return;
 
-		const initialData = data ?? MindElixir.new('Mind Map');
-		const themeToUse =
-			initialData.theme ?? getTheme(resolvedTheme.current === 'dark', monochrome);
+		const initialData = toData(data) ?? MindElixir.new('Mind Map');
+		const themeToUse = initialData.theme ?? getTheme(resolvedTheme.current === 'dark', monochrome);
 
 		const options: Options = {
 			el: containerEl,
@@ -108,9 +125,7 @@
 			alignment: 'nodes',
 			theme: themeToUse,
 			// Read latest props via closures — destructured $props stay up to date
-			markdown: markdown
-				? (text, obj) => markdown?.(text, obj) ?? text
-				: undefined,
+			markdown: markdown ? (text, obj) => markdown?.(text, obj) ?? text : undefined,
 			imageProxy: imageProxy ? (url) => imageProxy?.(url) ?? url : undefined
 		};
 
@@ -151,7 +166,7 @@
 
 	// Refresh data when prop changes (skip internal onChange echoes)
 	$effect(() => {
-		const next = data;
+		const next = toData(data);
 		if (!mindRef || !ctx.isLoaded || !next) return;
 		if (isInternalChange) {
 			isInternalChange = false;
@@ -163,7 +178,7 @@
 	// Theme updates (data.theme has highest priority)
 	$effect(() => {
 		if (!mindRef || !ctx.isLoaded) return;
-		if (data?.theme) return;
+		if (typeof data === 'object' && data?.theme) return;
 		const newTheme = getTheme(resolvedTheme.current === 'dark', monochrome);
 		mindRef.changeTheme(newTheme);
 	});
@@ -201,7 +216,7 @@
 	<div
 		bind:this={containerEl}
 		id={mapId}
-		class="bg-background h-full w-full overflow-hidden rounded-lg"
+		class="h-full w-full overflow-hidden rounded-lg bg-background"
 	></div>
 
 	{#if !ctx.isLoaded}
@@ -209,9 +224,9 @@
 			{@render loader()}
 		{:else}
 			<div
-				class="bg-background/80 absolute inset-0 flex items-center justify-center backdrop-blur-sm"
+				class="absolute inset-0 flex items-center justify-center bg-background/80 backdrop-blur-sm"
 			>
-				<Loader2 class="text-muted-foreground size-8 animate-spin" />
+				<Loader2 class="size-8 animate-spin text-muted-foreground" />
 			</div>
 		{/if}
 	{/if}

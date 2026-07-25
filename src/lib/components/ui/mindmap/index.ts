@@ -6,6 +6,7 @@ export { useMindMap, MindMapContext } from './context.svelte.js';
 export { getTheme } from './themes.js';
 export type {
 	MindMapData,
+	MindMapInput,
 	MindMapDirection,
 	MindMapLocale,
 	MindMapMarkdownParser,

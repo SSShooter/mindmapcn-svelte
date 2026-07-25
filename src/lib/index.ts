@@ -8,6 +8,7 @@ export {
 
 export type {
 	MindMapData,
+	MindMapInput,
 	MindMapDirection,
 	MindMapLocale,
 	MindMapMarkdownParser,
