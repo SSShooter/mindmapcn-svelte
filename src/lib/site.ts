@@ -5,6 +5,8 @@ export const siteDescription =
 
 /** Upstream React project this port is based on. */
 export const upstreamRepo = 'https://github.com/ssshooter/mindmapcn';
+/** Site of the upstream React version. */
+export const upstreamSiteUrl = 'https://mindmapcn.mind-elixir.com';
 /** Prefer this project's repo when published; falls back to upstream for stars/links. */
 export const githubRepo = 'https://github.com/ssshooter/mindmapcn-svelte';
 export const githubAuthor = 'https://github.com/ssshooter';

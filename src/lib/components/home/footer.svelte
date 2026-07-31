@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { githubAuthor, githubRepo } from '$lib/site.js';
+	import { githubAuthor, githubRepo, upstreamSiteUrl } from '$lib/site.js';
 </script>
 
 <footer class="border-border/40 w-full border-t px-6 py-6">
@@ -19,6 +19,14 @@
 			<span class="text-muted-foreground/70"> · mindmapcn-svelte</span>
 		</span>
 		<div class="flex items-center gap-4">
+			<a
+				href={upstreamSiteUrl}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="hover:text-foreground transition-colors"
+			>
+				React Version
+			</a>
 			<a
 				href={githubRepo}
 				target="_blank"
