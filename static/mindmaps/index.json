@@ -1,0 +1,34 @@
+[
+	{
+		"name": "mindmap",
+		"title": "MindMap",
+		"type": "registry:ui",
+		"description": "A Mind Elixir-powered mind map component for Svelte with theme-aware styling, controls, and presentation-first defaults.",
+		"dependencies": [
+			"mind-elixir",
+			"@lucide/svelte",
+			"@mind-elixir/export-mindmap"
+		],
+		"registryDependencies": [],
+		"meta": {
+			"components": [
+				{
+					"title": "MindMap",
+					"href": "/llm/mindmap",
+					"description": "Root Mind Elixir map component for presentation-first diagrams."
+				},
+				{
+					"title": "MindMapControls",
+					"href": "/docs/api-reference",
+					"description": "Zoom, fit-to-view, and export controls."
+				},
+				{
+					"title": "useMindMap",
+					"href": "/docs/api-reference",
+					"description": "Access the Mind Elixir instance and load state from child components."
+				}
+			]
+		},
+		"relativeUrl": "mindmap.json"
+	}
+]

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { Download, Maximize, Minus, Plus, ScanSearch } from '@lucide/svelte';
-	import { snapdom, type SnapdomOptions } from '@zumer/snapdom';
+	import { domToBlob } from '@mind-elixir/export-mindmap';
 	import { cn } from '$lib/utils.js';
 	import { useMindMap } from './context.svelte.js';
 	import type { MindMapControlsPosition } from './types.js';
@@ -77,22 +77,23 @@
 	async function handleExport() {
 		if (!ctx.mind) return;
 		try {
-			const result = await snapdom(ctx.mind.nodes);
-			const rootTopic = ctx.mind.nodeData.topic || 'mindmap';
-			const filename = `${rootTopic}.jpg`;
-			const options = {
-				type: 'jpg',
-				filename: rootTopic,
+			const blob = await domToBlob(ctx.mind.nodes, 'jpeg', {
 				quality: 1,
 				backgroundColor: ctx.mind.theme.cssVar['--bgcolor']
-			} as SnapdomOptions;
+			});
+			const rootTopic = ctx.mind.nodeData.topic || 'mindmap';
+			const filename = `${rootTopic}.jpg`;
 
 			if (onExport) {
-				const blob = await result.toBlob(options);
 				onExport(blob, filename);
 			}
 
-			await result.download(options);
+			const url = URL.createObjectURL(blob);
+			const link = document.createElement('a');
+			link.download = filename;
+			link.href = url;
+			link.click();
+			URL.revokeObjectURL(url);
 		} catch (error) {
 			console.error('Failed to export mind map:', error);
 		}

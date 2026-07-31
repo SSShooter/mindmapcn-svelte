@@ -95,7 +95,7 @@ src/
 - Tailwind CSS v4
 - shadcn-svelte (Nova / neutral)
 - mind-elixir
-- @zumer/snapdom
+- @mind-elixir/export-mindmap
 - mode-watcher
 - shiki (docs code highlighting)
 

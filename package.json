@@ -11,7 +11,8 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"registry:build": "shadcn-svelte registry build -o ./static/mindmaps && node -e \"require('fs').copyFileSync('registry.json','static/mindmaps/registry.json')\""
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
@@ -38,7 +39,7 @@
 	"dependencies": {
 		"@fontsource-variable/inter": "^5.2.8",
 		"@lucide/svelte": "^1.25.0",
-		"@zumer/snapdom": "^2.23.1",
+		"@mind-elixir/export-mindmap": "^0.1.6",
 		"bits-ui": "^2.18.1",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
