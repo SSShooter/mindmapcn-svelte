@@ -38,11 +38,11 @@
 	"dependencies": {
 		"@fontsource-variable/inter": "^5.2.8",
 		"@lucide/svelte": "^1.25.0",
-		"@zumer/snapdom": "^2.16.0",
+		"@zumer/snapdom": "^2.23.1",
 		"bits-ui": "^2.18.1",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
-		"mind-elixir": "^5.14.0",
+		"mind-elixir": "5.15.0-beta.4",
 		"mode-watcher": "^1.1.0",
 		"shadcn-svelte": "^1.4.2",
 		"shiki": "^4.3.1",
