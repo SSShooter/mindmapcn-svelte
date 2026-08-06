@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { Download, Maximize, Minus, Plus, ScanSearch } from '@lucide/svelte';
-	import { domToBlob } from '@mind-elixir/export-mindmap';
+	import { exportImageBlob } from '@mind-elixir/export-mindmap';
 	import { cn } from '$lib/utils.js';
 	import { useMindMap } from './context.svelte.js';
 	import type { MindMapControlsPosition } from './types.js';
@@ -77,10 +77,7 @@
 	async function handleExport() {
 		if (!ctx.mind) return;
 		try {
-			const blob = await domToBlob(ctx.mind.nodes, 'jpeg', {
-				quality: 1,
-				backgroundColor: ctx.mind.theme.cssVar['--bgcolor']
-			});
+			const blob = await exportImageBlob(ctx.mind, 'jpeg');
 			const rootTopic = ctx.mind.nodeData.topic || 'mindmap';
 			const filename = `${rootTopic}.jpg`;
 
