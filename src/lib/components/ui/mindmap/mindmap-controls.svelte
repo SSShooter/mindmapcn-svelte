@@ -77,7 +77,9 @@
 	async function handleExport() {
 		if (!ctx.mind) return;
 		try {
-			const blob = await exportImageBlob(ctx.mind, 'jpeg');
+			const blob = await exportImageBlob(ctx.mind, 'jpeg', {
+				watermarkEnabled: false
+			});
 			const rootTopic = ctx.mind.nodeData.topic || 'mindmap';
 			const filename = `${rootTopic}.jpg`;
 

@@ -7,4 +7,4 @@ allowBuilds:
 
 minimumReleaseAgeExclude:
   - mind-elixir@5.15.0
-  - '@mind-elixir/export-mindmap@0.1.8'
+  - '@mind-elixir/export-mindmap@0.1.9'

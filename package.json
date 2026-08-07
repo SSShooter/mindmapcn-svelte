@@ -39,7 +39,7 @@
 	"dependencies": {
 		"@fontsource-variable/inter": "^5.2.8",
 		"@lucide/svelte": "^1.25.0",
-		"@mind-elixir/export-mindmap": "0.1.8",
+		"@mind-elixir/export-mindmap": "0.1.9",
 		"bits-ui": "^2.18.1",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
